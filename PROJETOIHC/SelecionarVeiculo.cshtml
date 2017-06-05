@@ -1,0 +1,29 @@
+﻿@{
+   dynamic usuario_atual =Session["usuario_atual"];
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        @if(usuario_atual== null){
+        <span>   
+            
+            Olá, <a href="~/Login">Clique aqui Para Logar</a>
+        
+        </span>
+
+        }
+        else{
+            
+            <h2>Bem vindo @usuario_atual.nome na Pág. Index</h2>
+            <a href="~/Logout">Sair</a>
+        }
+   
+      
+    </body>
+</html>

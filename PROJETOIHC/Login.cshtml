@@ -1,0 +1,62 @@
+﻿@{
+    // criar as regras de validacoes usuario e senha preenchido  
+    Validation.RequireField("login","o campo login é obrigatorio.");
+     Validation.RequireField("senha","o campo senha é obrigatorio.");
+     //e verificar se a requisicao veio via post e a validacao foi ok 
+     string login = Request.Form["login"];
+     string senha= Request.Form["senha"];
+    if(IsPost&& Validation.IsValid()){
+         // criptografar a senha informada 
+        string senha_criptografada= new SenhaCriptografada(senha).ToString();
+        //consultar no banco quem tem o login e senha informada
+        var db= Database.Open("sessoes");
+        var usuario= db.QuerySingle("SELECT * FROM Usuarios WHERE Login=@0 AND Senha=@1", login,senha_criptografada);
+        //se existir uma pessoa, entao logamos
+        if (usuario !=null){
+            Session["usuario_atual"] = usuario;
+
+        }
+
+        db.Close();
+
+
+    }
+    dynamic usuario_atual =Session["usuario_atual"];
+    
+   
+    
+    
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+       
+        @if(usuario_atual== null){ 
+            <h2>Login</h2>
+             <form action="" method="post">
+            <label>Login:</label>
+            <input type="text" name="login"><br>
+            <label>Senha:</label>
+            <input type="password" name="senha"><br>
+            <button type="submit">Logar</button>
+            <a href="CadastrarUsuarios" >Efetue seu cadastro</a>
+                 
+        
+        
+        
+        </form>
+
+        }
+        else{
+            <h2>Bem Vindo @usuario_atual.nome</h2>
+            <a href="~/SelecionarVeiculo">va para Index</a>
+        }
+       
+    </body>
+</html>

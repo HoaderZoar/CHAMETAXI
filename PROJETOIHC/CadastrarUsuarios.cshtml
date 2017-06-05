@@ -1,0 +1,59 @@
+﻿@{
+    Validation.RequireFields("nome","email","login","senha","senha_Confirmacao");
+    //IsPost == Request.HttpMethod== System.Net.WebRequestMethods.Http.Post
+    if(IsPost&& Validation.IsValid()){
+        string nome= Request.Form["nome"];
+        string email= Request.Form["email"];
+        string login= Request.Form["login"];
+        string senha= Request.Form["senha"];
+        string senha_Confirmacao= Request.Form["senha_Confirmacao"];
+        
+        if(senha == senha_Confirmacao){
+            var db=Database.Open("sessoes");
+            string senha_criptografada = new SenhaCriptografada(senha).ToString();
+            db.Execute("INSERT INTO Usuarios (nome, Email, Login, Senha) VALUES (@0,@1,@2,@3)", nome, email,login,senha_criptografada);
+
+            db.Close();
+        }
+    }
+    
+
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <h2>Cadastro de Usuários</h2>
+
+        @if(IsPost && !Validation.IsValid()){
+            <div style=" color: #fff; background-color:#f00"> Erros no envio do form</div>
+        }
+        <form  action="" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="@Request.Form["nome"]">
+            @Html.ValidationMessage("nome")<br>
+            <label for="endereco">Endereço:</label>
+            <input type="text" name="endereco" value="@Request.Form["endereco"]">
+             @Html.ValidationMessage("endereco")<br>
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" value="@Request.Form["cpf"]">
+             @Html.ValidationMessage("cpf")<br>
+            <label for="login">Login:</label>
+            <input type="text" name="login" value="@Request.Form["login"]">
+             @Html.ValidationMessage("login")<br>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" value="">
+             @Html.ValidationMessage("senha")<br>
+            <label for="senha_Confirmacao">Senha Confirmação:</label>
+            <input type="password" name="senha_confirmacao" value="">
+             @Html.ValidationMessage("senha_Confirmacao")<br>
+            <button type="submit">Cadastrar</button>
+      
+        </form>        
+    </body>
+</html>
