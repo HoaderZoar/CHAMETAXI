@@ -3,16 +3,16 @@
     //IsPost == Request.HttpMethod== System.Net.WebRequestMethods.Http.Post
     if(IsPost&& Validation.IsValid()){
         string nome= Request.Form["nome"];
-        string email= Request.Form["endereco"];
+        string endereco= Request.Form["endereco"];
          string cpf= Request.Form["cpf"];
-        string login= Request.Form["login"];
-        string senha= Request.Form["senha"];
+        string login= Request.Form["Login"];
+        string senha= Request.Form["Senha"];
         string senha_Confirmacao= Request.Form["senha_Confirmacao"];
         
         if(senha == senha_Confirmacao){
-            var db=Database.Open("PROJETOIHC");
+            var db=Database.Open("sessoes");
             string senha_criptografada = new SenhaCriptografada(senha).ToString();
-            db.Execute("INSERT INTO Usuarios (nome, endereco,cpf, Login, Senha) VALUES (@0,@1,@2,@3,@4)", nome, endereco,cpf,login,senha_criptografada);
+            db.Execute("INSERT INTO Usuarios (nome, endereco, cpf, Login, Senha) VALUES (@0,@1,@2,@3,@4)" ,nome,endereco,cpf,login,senha_criptografada);
 
             db.Close();
         }
@@ -34,27 +34,54 @@
         @if(IsPost && !Validation.IsValid()){
             <div style=" color: #fff; background-color:#f00"> Erros no envio do form</div>
         }
-        <form  action="" method="post">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="@Request.Form["nome"]">
-            @Html.ValidationMessage("nome")<br>
-            <label for="endereco">Endereço:</label>
-            <input type="text" name="endereco" value="@Request.Form["endereco"]">
-             @Html.ValidationMessage("endereco")<br>
-            <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" value="@Request.Form["cpf"]">
-             @Html.ValidationMessage("cpf")<br>
-            <label for="login">Login:</label>
-            <input type="text" name="login" value="@Request.Form["login"]">
-             @Html.ValidationMessage("login")<br>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" value="">
-             @Html.ValidationMessage("senha")<br>
-            <label for="senha_Confirmacao">Senha Confirmação:</label>
-            <input type="password" name="senha_confirmacao" value="">
-             @Html.ValidationMessage("senha_Confirmacao")<br>
-            <button type="submit">Cadastrar<a href="Login"></a></button>
+   <fieldset>
+       
+        <form method="post" class="form-horizontal">
+
+     <div class="form-group">
+        <label for="nome">Nome:  </label>
+        <input type="text" name="nome" value="@Request.Form["nome"]" class="form-control">      
+        @Html.ValidationMessage("nome")
+
+     </div>    <br>
+            
+     <div class="form-group">
+          <label for="endereco">Endereço:</label>
+          <input type="text" name="endereco" value="@Request.Form["endereco"]" class="form-control"> 
+           @Html.ValidationMessage("endereco") 
+     </div><br>
+
+     <div class="form-group">
+         <label for="cpf">CPF:</label>
+         <input type="text" name="cpf" value="@Request.Form["cpf"]" class="form-control">
+          @Html.ValidationMessage("cpf") 
+     </div><br>
+
+     <div class="form-group"> 
+         <label for="login">Login:</label>
+         <input type="text" name="login" value="@Request.Form["login"]" class="form-control">
+          @Html.ValidationMessage("login")     
+     </div><br>
+
+     <div class="form-group"> 
+         <label for="senha">Senha:</label>
+         <input type="password" name="senha" value="" class="form-control">
+          @Html.ValidationMessage("senha")
+     </div><br>
+
+     <div class="form-group">
+         <label for="senha_Confirmacao">Senha Confirmação:</label>
+         <input type="password" name="senha_confirmacao" value="" class="form-control">
+         @Html.ValidationMessage("senha_Confirmacao") 
+     </div>
+            <br>
+            <input type="submit" value="Cadastrar" class="btn btn-succes" > 
+
+
+            <a href="Login.cshtml">efetuar Login</a>
       
-        </form>        
+        </form>
+   </fieldset>
+           
     </body>
 </html>
