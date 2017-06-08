@@ -1,17 +1,18 @@
 ﻿@{
-    Validation.RequireFields("nome","email","login","senha","senha_Confirmacao");
+    Validation.RequireFields("nome","endereco","cpf","login","senha","senha_Confirmacao");
     //IsPost == Request.HttpMethod== System.Net.WebRequestMethods.Http.Post
     if(IsPost&& Validation.IsValid()){
         string nome= Request.Form["nome"];
-        string email= Request.Form["email"];
+        string email= Request.Form["endereco"];
+         string cpf= Request.Form["cpf"];
         string login= Request.Form["login"];
         string senha= Request.Form["senha"];
         string senha_Confirmacao= Request.Form["senha_Confirmacao"];
         
         if(senha == senha_Confirmacao){
-            var db=Database.Open("sessoes");
+            var db=Database.Open("PROJETOIHC");
             string senha_criptografada = new SenhaCriptografada(senha).ToString();
-            db.Execute("INSERT INTO Usuarios (nome, Email, Login, Senha) VALUES (@0,@1,@2,@3)", nome, email,login,senha_criptografada);
+            db.Execute("INSERT INTO Usuarios (nome, endereco,cpf, Login, Senha) VALUES (@0,@1,@2,@3,@4)", nome, endereco,cpf,login,senha_criptografada);
 
             db.Close();
         }
@@ -52,7 +53,7 @@
             <label for="senha_Confirmacao">Senha Confirmação:</label>
             <input type="password" name="senha_confirmacao" value="">
              @Html.ValidationMessage("senha_Confirmacao")<br>
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Cadastrar<a href="Login"></a></button>
       
         </form>        
     </body>
