@@ -1,5 +1,11 @@
 ﻿@{
-    
+    Validation.RequireFields("nome","numero","validadecartao","codSeg");
+  if(IsPost&& Validation.IsValid()){
+        string nome= Request.Form["nome"];
+        string numero= Request.Form["numero"];
+         string validadecartao= Request.Form["validadecartao"];
+        string codSeg= Request.Form["codSeg"];
+ }     
 }
 
 <!DOCTYPE html>
@@ -8,8 +14,81 @@
     <head>
         <meta charset="utf-8" />
         <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        
+        @if(IsPost && !Validation.IsValid()){
+            <div style=" color: #fff; background-color:#f00"> Erros no envio do form</div>
+         }
+       <div class="conteiner">
+
+        <form method="Post" class="form-group"> 
+
+            <div class="form-group"> 
+    <div class="col-sm-offset-0 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> CRÉDITO</label>
+      </div>
+    </div>
+  </div>
+                             
+             <div class="form-group"> 
+    <div class="col-sm-offset-0 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> DEBITO</label>
+      </div>
+    </div>
+  </div>
+              
+             
+                     <div class="form-group"> 
+    <div class="col-sm-offset-0 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> DINHEIRO</label>
+      </div>
+    </div>
+  </div>
+              
+            <br><br>
+            <br>
+            <select class="form-control">
+                <option>Visa</option>
+                <option>Master</option>
+                <option>Elo</option>
+                <option>Diner</option>
+             </select><br><br>
+      
+          
+                <div class="form-group" >
+        <label for="nome">Nome do titular:  </label>
+        <input type="text" name="nome"  value="@Request.Form["nome"]"  class="form-control">      
+        @Html.ValidationMessage("nome")</div>
+                <div class="form-group" >
+        <label for="nome">Numero Do Cartão:  </label>
+        <input type="text" name="nome" value="@Request.Form["numero"]"  class="form-control"placeholder="">      
+        @Html.ValidationMessage("numero")</div>
+                <div class="form-group" >
+        <label for="nome">ValidadeCartão:  </label>
+        <input type="datetime" name="validadecartao" class="form-control" value="@Request.Form["validadecartao"]"  placeholder="MM/AAAA">      
+        @Html.ValidationMessage("validadecartao")</div>
+                 <div class="form-group" >
+        <label for="nome">Cod Segurança:  </label>
+        <input type="text" name="codSeg"  class="form-control"placeholder="***">      
+        @Html.ValidationMessage("codSeg")
+                </div>  
+
+            <input type="submit" class="btn btn-btnsucess" value="EfetuarPagamento">
+           
+           </form>
+       
+       
+       
+       </div>
+       
+    
+  
+
     </body>
 </html>
