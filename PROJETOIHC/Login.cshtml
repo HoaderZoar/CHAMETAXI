@@ -34,29 +34,65 @@
     <head>
         <meta charset="utf-8" />
         <title>ChameTaxi</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+
     </head>
     <body>
-       
-        @if(usuario_atual== null){ 
-            <h2>Login</h2>
-             <form action="" method="post">
-            <label>Login:</label>
-            <input type="text" name="login"><br>
-            <label>Senha:</label>
-            <input type="password" name="senha"><br>
-            <button type="submit">Logar</button>
-            <a href="CadastrarUsuarios" >Efetue seu cadastro</a>
-                 
-        
-        
-        
-        </form>
+       <style>
+           .login-page{
+    background-image: url('99taxis.png');
+    background-repeat: no-repeat;
+    background-size:100%;
+    bottom: 0;
+    color: black;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
 
+}
+           .login-page .form-group
+{
+    padding: 8px 0;
+}
+.login-page .form-content
+{
+    padding: 40px 0;
+}
+ </style>
+      @if(usuario_atual== null){ 
+        
+<div class=login-page>
+<div class=row>
+
+   
+      <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+       
+          <form action="" method="post">
+            <div class=form-content>
+               <div class=form-group> <input type=text class="form-control input-underline input-lg" name="login" placeholder= Nome> </div>
+               <div class=form-group> <input type=password class="form-control input-underline input-lg" name="senha" placeholder=Password> </div>
+            </div>
+            <button type=submit class="btn btn-white btn-outline btn-lg btn-rounded">Login</button> 
+              <a href="CadastrarUsuarios" >Efetue seu cadastro</a>
+         </form>
+      
+                     
+       
+          
+      </div>
+     </div> 
+  </div>
         }
         else{
             <h2>Bem Vindo @usuario_atual.nome</h2>
             <a href="~/SelecionarVeiculo">Selecione o tipo de Transporte</a>
         }
-       
     </body>
 </html>
