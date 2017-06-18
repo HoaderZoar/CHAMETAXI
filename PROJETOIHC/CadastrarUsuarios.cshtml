@@ -1,5 +1,5 @@
 ﻿@{
-    Validation.RequireFields("nome","endereco","cpf","login","senha","senha_Confirmacao");
+    Validation.RequireFields("nome","endereco","cpf","login","Senha","senha_Confirmacao");
     //IsPost == Request.HttpMethod== System.Net.WebRequestMethods.Http.Post
     if(IsPost&& Validation.IsValid()){
         string nome= Request.Form["nome"];
@@ -35,72 +35,105 @@
 </head>
     </head>
     <body>
+        <style>
+           .Cadastro-page{
+    background-image: url('99taxis.png');
+    background-repeat: round;
+    background-size:100%;
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+   font-size: x-large;
+    top: 0;
+
+}
+           .Cadastro-page .form-group
+{
+    padding: 8px 0;
+}
+.Cadastro-page .form-content
+{
+    padding: 40px 0;
+}
+           .span{
+                font-style:italic;
+                font-size: 50px;
+            }
+ </style>
+
+        <div class="conteiner">
+       <div class=Cadastro-page>
+<div class=row>
+
+   
+      <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
        
-        <h2>Cadastro de Usuários</h2>
-       
-        @if(IsPost && !Validation.IsValid()){
+          <form action="" method="post">  
+@if(IsPost && !Validation.IsValid()){
             <div style=" color: #fff; background-color:#f00"> Erros no envio do form</div>
          }
-
-          @if(IsPost && Validation.IsValid()){
+@if(IsPost && Validation.IsValid()){
      //<div style=" color: #fff; background-color:#00ff21"> Cadastro realizado efetue seu login</div>
     <div class="alert alert-success">
   <strong>Salvo com sucesso!</strong> 
+        <a href="Login.cshtml">efetuar Login</a>
 </div>
-
-
-         }        
-        
-        <img src="Chametaxi.jpg" class="img-rounded" alt="Cinque Terre"  width="100%" height="400">
-
-        <div class="conteiner">
-       
-        <form method="post">
-
-     <div class="form-group" >
+}
+              <span class="span">Cadastro de Usuários</span>
+            <div class=form-content>
+               <div class="form-group" >
         <label for="nome">Nome:  </label>
         <input type="text" name="nome" value="@Request.Form["nome"]" class="form-control">      
         @Html.ValidationMessage("nome")
 
      </div>    <br>
-            
-     <div class="form-group">
-          <label for="endereco">Endereço:</label>
+                <div class="form-group">
+          <label class="label" for="endereco">Endereço:</label>
           <input type="text" name="endereco" value="@Request.Form["endereco"]" class="form-control"> 
            @Html.ValidationMessage("endereco") 
      </div><br>
 
      <div class="form-group">
-         <label for="cpf">CPF:</label>
+         <label class="label" for="cpf">CPF:</label>
          <input type="text" name="cpf" value="@Request.Form["cpf"]" class="form-control"placeholder="999.999.999-99">
           @Html.ValidationMessage("cpf") 
      </div><br>
 
      <div class="form-group"> 
-         <label for="login">Login:</label>
-         <input type="text" name="login" value="@Request.Form["login"]" class="form-control">
-          @Html.ValidationMessage("login")     
+         <label class="label" for="Login">Login:</label>
+         <input type="text" name="login" value="@Request.Form["Login"]" class="form-control">
+          @Html.ValidationMessage("Login")     
      </div><br>
 
      <div class="form-group"> 
-         <label for="senha">Senha:</label>
-         <input type="password" name="senha" value="" class="form-control">
-          @Html.ValidationMessage("senha")
+         <label class="label" for="Senha">Senha:</label>
+         <input type="password" name="Senha" value="@Request.Form["Senha"]" class="form-control">
+          @Html.ValidationMessage("Senha")
      </div><br>
 
      <div class="form-group">
-         <label for="senha_Confirmacao">Senha Confirmação:</label>
-         <input type="password" name="senha_confirmacao" value="" class="form-control">
+         <label class="label" for="senha_Confirmacao">Senha Confirmação:</label>
+         <input type="password" name="senha_Confirmacao" value="@Request.Form["senha_Confirmacao"]" class="form-control">
          @Html.ValidationMessage("senha_Confirmacao") 
      </div>
             <br>
-            <input type="submit" value="Cadastrar" class="btn btn-succes" > 
-
-
-            <a href="Login.cshtml">efetuar Login</a>
+           
+            <input type="submit"   class="btn btn-black btn btn-secondary btn-lg " value="Cadastrar" >
+                 
+              </div>
+         </form>
       
-        </form>
-   
+                     
+       
+          </div>
       </div>
+     </div> 
+  </div>
+        
     </body>
 </html>

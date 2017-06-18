@@ -12,10 +12,16 @@
         var db= Database.Open("sessoes");
         var usuario= db.QuerySingle("SELECT * FROM Usuarios WHERE Login=@0 AND Senha=@1", login,senha_criptografada);
         //se existir uma pessoa, entao logamos
+        
+               
+            
         if (usuario !=null){
             Session["usuario_atual"] = usuario;
-
+            
+            
+                     
         }
+        
 
         db.Close();
 
@@ -43,8 +49,8 @@
     <body>
        <style>
            .login-page{
-    background-image: url('99taxis.png');
-    background-repeat: no-repeat;
+    background-image: url('Chametaxi.jpg');
+    background-repeat: round;
     background-size:100%;
     bottom: 0;
     color: black;
@@ -66,7 +72,8 @@
     padding: 40px 0;
 }
  </style>
-      @if(usuario_atual== null){ 
+      @if(usuario_atual== null){            
+          
         
 <div class=login-page>
 <div class=row>
@@ -75,6 +82,7 @@
       <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
        
           <form action="" method="post">
+              
             <div class=form-content>
                <div class=form-group> <input type=text class="form-control input-underline input-lg" name="login" placeholder= Nome> </div>
                <div class=form-group> <input type=password class="form-control input-underline input-lg" name="senha" placeholder=Password> </div>

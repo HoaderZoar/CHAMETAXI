@@ -7,7 +7,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title>Selecionar Veículo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         @if(usuario_atual== null){
@@ -24,11 +27,10 @@
         <form >
         <input type="radio" name="mototaxi"value="MotoTaxi">MotoTaxi
             <input type="radio" name="taxi" value="Taxi">Taxi<br>
+
+
         </form>
-   
-		
-
-
+            <a href="EfetuarPagamento">Formas de Pagamento</a>
             <a href="~/Logout">Sair</a>
         }
 
