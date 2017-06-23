@@ -1,11 +1,12 @@
 ﻿@{
     Validation.RequireFields("nome","numero","validadecartao","codSeg");
-  if(IsPost&& Validation.IsValid()){
+  if(IsPost&& Validation.IsValid())
+  {
         string nome= Request.Form["nome"];
         string numero= Request.Form["numero"];
          string validadecartao= Request.Form["validadecartao"];
         string codSeg= Request.Form["codSeg"];
- }     
+   }  
 }
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
              <div class="form-group"> 
     <div class="col-sm-offset-0 col-sm-10">
       <div class="checkbox">
-        <label><input type="checkbox"> DEBITO</label>
+        <label><input type="checkbox"> DÉBITO</label>
       </div>
     </div>
   </div>
@@ -59,26 +60,31 @@
                 <option>Elo</option>
                 <option>Diner</option>
              </select><br><br>
-      
-          
+
                 <div class="form-group" >
         <label for="nome">Nome do titular:  </label>
         <input type="text" name="nome"  value="@Request.Form["nome"]"  class="form-control">      
-        @Html.ValidationMessage("nome")</div>
+        @Html.ValidationMessage("nome")
+                </div>
+
                 <div class="form-group" >
-        <label for="nome">Numero Do Cartão:  </label>
-        <input type="text" name="nome" value="@Request.Form["numero"]"  class="form-control"placeholder="">      
+        <label for="numero">Numero Do Cartão:  </label>
+        <input type="text" name="numero" value="@Request.Form["numero"]"  class="form-control"placeholder="">      
         @Html.ValidationMessage("numero")</div>
+
                 <div class="form-group" >
-        <label for="nome">ValidadeCartão:  </label>
-        <input type="datetime" name="validadecartao" class="form-control" value="@Request.Form["validadecartao"]"  placeholder="MM/AAAA">      
-        @Html.ValidationMessage("validadecartao")</div>
+        <label for="validadecartao">Validade do Cartão:  </label>
+        <input type="datetime" name="validadecartao" class="form-control" value="@Request.Form["validadecartao"]"  placeholder="MM/AAAA">     
+        @Html.ValidationMessage("validadecartao")
+                </div>
+
                  <div class="form-group" >
-        <label for="nome">Cod Segurança:  </label>
+        <label for="codSeg">Código de Segurança:  </label>
         <input type="text" name="codSeg"  class="form-control"placeholder="***">      
         @Html.ValidationMessage("codSeg")
-                </div>  
-
+                </div>
+              
+            
             <input type="submit" class="btn btn-btnsucess" value="EfetuarPagamento">
            
            </form>
