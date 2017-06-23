@@ -12,18 +12,53 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title>Pagamento</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <style>
+            .Pagamento-page{
+    background-image: url('99taxis.png');
+    background-repeat: round;
+    background-size:100%;
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+   font-size: x-large;
+    top: 0;
+
+}
+           .Pagamento-page .form-group
+{
+    padding: 8px 0;
+}
+.Pagamento-page .form-content
+{
+    padding: 40px 0;
+}
+           .span{
+                font-style:italic;
+                font-size: 50px;
+            }
+ </style>
+        </style>
         
        <div class="conteiner">
-
+           <div class="Pagamento-page">
         <form method="Post" class="form-group"> 
+            @if(IsPost&& Validation.IsValid()){
+        <div class="alert alert-success">
+  <strong>Pagamento efetuado com sucesso!</strong> <a href="~/Logout">Sair</a>  
+</div>}
 @if(IsPost && !Validation.IsValid()){
-            <div style=" color: #fff; background-color:#f00"> Erros no envio do form</div>
+            <div style=" color: #fff; background-color:#f00"> prencha todos campos </div>
          }
         
       
@@ -54,11 +89,13 @@
               
             <br><br>
             <br>
+            <label for="select">Selecione bandeira do Cartão</label>
             <select class="form-control">
                 <option>Visa</option>
                 <option>Master</option>
                 <option>Elo</option>
                 <option>Diner</option>
+                <option>CalCard</option>
              </select><br><br>
       
           
@@ -86,7 +123,7 @@
             <input type="submit" class="btn btn-btnsucess" value="EfetuarPagamento">
            
            </form>
-       
+       </div>
        
        
        </div>
