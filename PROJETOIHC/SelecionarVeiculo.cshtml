@@ -13,6 +13,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <style>
+            .img-responsive{
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+            
+        </style>
+        <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
         @if(usuario_atual== null){
         <span>   
             
@@ -24,17 +33,39 @@
         else{
             
             <h2>Bem vindo @usuario_atual.nome selecione o transporte </h2>
-        <form >
-        <input type="radio" name="mototaxi"value="MotoTaxi">MotoTaxi
-            <input type="radio" name="taxi" value="Taxi">Taxi<br>
+        <form method="Post" class="form-group"> 
 
-
-        </form>
-            <a href="EfetuarPagamento">Formas de Pagamento</a>
-            <a href="~/Logout">Sair</a>
+            <div class="form-group"> 
+    <div class="col-sm-offset-0 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> TAXI</label>
+      </div>
+    </div>
+  </div>
+                             
+             <div class="form-group"> 
+    <div class="col-sm-offset-0 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> MOTOTAXI</label>
+      </div>
+    </div>
+  </div>
+           <img class="img-responsive" src="mapa.PNG" alt="mapa">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+   
+             <a href="EfetuarPagamento">Formas de Pagamento</a>
+           
+            
+           
+              </form>
         }
 
    
-      
+      </div>
+
     </body>
 </html>

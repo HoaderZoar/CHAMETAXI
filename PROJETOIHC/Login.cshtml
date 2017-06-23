@@ -71,36 +71,44 @@
 {
     padding: 40px 0;
 }
+          a,h2{
+               color: #fff;
+           }
  </style>
-      @if(usuario_atual== null){            
+                  
           
-        
+ <form action="" method="post">       
 <div class=login-page>
 <div class=row>
 
    
       <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-       
-          <form action="" method="post">
-              
+       @if(IsPost && !Validation.IsValid()){
+            <div style=" color: #fff; background-color:#f00"> Erros no envio do form</div>
+         }
+         
+              @if(usuario_atual== null){
+
             <div class=form-content>
                <div class=form-group> <input type=text class="form-control input-underline input-lg" name="login" placeholder= Nome> </div>
                <div class=form-group> <input type=password class="form-control input-underline input-lg" name="senha" placeholder=Password> </div>
             </div>
             <button type=submit class="btn btn-white btn-outline btn-lg btn-rounded">Login</button> 
               <a href="CadastrarUsuarios" >Efetue seu cadastro</a>
-         </form>
+               }
+               else{
+            <h2>Bem Vindo @usuario_atual.nome</h2>
+            <a href="~/SelecionarVeiculo">Selecione o tipo de Transporte</a>
+         
       
                      
+        }
        
           
       </div>
      </div> 
   </div>
-        }
-        else{
-            <h2>Bem Vindo @usuario_atual.nome</h2>
-            <a href="~/SelecionarVeiculo">Selecione o tipo de Transporte</a>
-        }
+      </form> 
+        
     </body>
 </html>
