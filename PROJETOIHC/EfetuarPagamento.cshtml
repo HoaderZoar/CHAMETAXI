@@ -2,7 +2,7 @@
     Validation.RequireFields("nome","numero","validadecartao","codSeg");
   if(IsPost&& Validation.IsValid()){
         <div class="alert alert-success">
-  <strong>Pagamento efetuado com sucesso!</strong> <a href="~/Logout">Sair</a>  
+  <strong>Pagamento efetuado com sucesso! em instantes o taxi ira buscala </strong> <a href="~/Logout">Sair</a>  
 </div>
  }     
 }
@@ -55,10 +55,10 @@
         <form method="Post" class="form-group"> 
             @if(IsPost&& Validation.IsValid()){
         <div class="alert alert-success">
-  <strong>Pagamento efetuado com sucesso!</strong> <a href="~/Logout">Sair</a>  
+  <strong>Pagamento efetuado com sucesso! em instantes o taxi ira buscala</strong> <a href="~/Logout">Sair</a>  
 </div>}
 @if(IsPost && !Validation.IsValid()){
-            <div style=" color: #fff; background-color:#f00"> prencha todos campos </div>
+            <div style=" color: #fff; background-color:#f00"> prencha todos campos  em instantes o taxi ira buscala</div>
          }
         
       
@@ -120,7 +120,7 @@
            
             
 
-            <input type="submit" class="btn btn-btnsucess" value="EfetuarPagamento">
+            <input type="submit" class="btn btn-black btn btn-secondary btn-lg" style="color: #f00" value="EfetuarPagamento">
            
            </form>
        </div>
