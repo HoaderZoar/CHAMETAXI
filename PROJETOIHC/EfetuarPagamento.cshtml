@@ -1,10 +1,6 @@
 ﻿@{
     Validation.RequireFields("nome","numero","validadecartao","codSeg");
-  if(IsPost&& Validation.IsValid()){
-        <div class="alert alert-success">
-  <strong>Pagamento efetuado com sucesso! em instantes o taxi ira buscala </strong> <a href="~/Logout">Sair</a>  
-</div>
- }     
+   
 }
 
 <!DOCTYPE html>
@@ -55,37 +51,38 @@
         <form method="Post" class="form-group"> 
             @if(IsPost&& Validation.IsValid()){
         <div class="alert alert-success">
-  <strong>Pagamento efetuado com sucesso! em instantes o taxi ira buscala</strong> <a href="~/Logout">Sair</a>  
+  <strong>Pagamento efetuado com sucesso! em instantes o transporte chegara</strong> <a href="~/Logout">Sair</a>  
 </div>}
 @if(IsPost && !Validation.IsValid()){
-            <div style=" color: #fff; background-color:#f00"> prencha todos campos  em instantes o taxi ira buscala</div>
+            <div style=" color: #fff; background-color:#f00"> prencha todos campos</div>
          }
         
       
             <div class="form-group"> 
-    <div class="col-sm-offset-0 col-sm-10">
+    <div class="col-sm-offset-0 col-sm-0">
       <div class="checkbox">
-        <label><input type="checkbox"> CRÉDITO</label>
+        <label class="checkbox-inline"><input type="checkbox"> CRÉDITO</label>
       </div>
     </div>
   </div>
                              
              <div class="form-group"> 
-    <div class="col-sm-offset-0 col-sm-10">
+    <div class="col-sm-offset-0 col-sm-0">
       <div class="checkbox">
-        <label><input type="checkbox"> DEBITO</label>
+        <label class="checkbox-inline"><input type="checkbox"> DEBITO</label>
       </div>
     </div>
   </div>
               
              
-                     <div class="form-group"> 
-    <div class="col-sm-offset-0 col-sm-10">
+         <div class="form-group"> 
+    <div class="col-sm-offset-0 col-sm-0">
       <div class="checkbox">
-        <label><input type="checkbox"> DINHEIRO</label>
+        <label class="checkbox-inline"><input type="checkbox" name="dinheiro"> DINHEIRO</label>
       </div>
     </div>
   </div>
+          
               
             <br><br>
             <br>
